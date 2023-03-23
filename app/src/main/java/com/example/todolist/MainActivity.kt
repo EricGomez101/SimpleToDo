@@ -2,6 +2,7 @@ package com.example.todolist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         todoList = try {
             fileHelper.readData(this)
-        } catch (_: FileNotFoundException) {
+        } catch (_: Exception) {
             mutableListOf()
         }
         val toDoAdapter = ToDoAdapter(todoList)
@@ -36,7 +37,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
+        if (todoList.size > 0) {
+            Log.d("onPause", "Writing to do list to file...")
+            fileHelper.writeData(todoList, this)
+        }
 
-        fileHelper.writeData(todoList, this)
     }
 }
