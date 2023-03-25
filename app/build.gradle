@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.todolist'
+    namespace 'com.creativeOxStudio.todolist'
     compileSdk 33
 
     buildFeatures {
@@ -13,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.todolist"
+        applicationId "com.creativeOxStudio.todolist"
         minSdk 24
         targetSdk 33
         versionCode 1
